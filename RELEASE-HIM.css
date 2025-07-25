@@ -1,0 +1,91 @@
+#cage {
+    position:absolute;
+    width:300px;
+    margin:0px 30px 30px 30px;
+    transition: filter 5s;
+}
+#cage.hot {
+    filter: sepia(1);
+}
+button {
+    position:relative;
+    z-index: 50;
+}
+
+
+#him, #him-body, #him-face {
+    position:absolute;
+    image-rendering: pixelated;
+}
+#him {
+    width:100px;
+    height:100px;
+    top: 265px;
+    left:203px;
+    transition: all 0.3s;
+}
+#him.shake1 {
+    transform: translateY(-30px);
+}
+#him.fall1 {
+    transform: translateX(10px);
+}
+#him.left {
+    transform: translateX(-130px);
+}
+#him-face {
+    display:block;
+    top:7%;
+    left:-3%;
+}
+
+#cage-box{
+    width:300px;
+    height:330px;
+    transform: rotateZ(0deg) translate(0px);
+    transition: all 0.3s;
+}
+#cage-box.shake1{
+    transform: rotateZ(-25deg) translate(75px);
+}
+#cage-box.shake2{
+    transform: rotateZ(25deg) translate(-75px);
+}
+
+#flamethrower-box, #fire, #flamethrower {
+    position:absolute;
+    width:300px;
+    height:300px;
+}
+#flamethrower-box {
+    transition: transform 2s;
+}
+#flamethrower-box.active1 {
+    transform: translate(330px, -200px) rotateZ(30deg);
+}
+#flamethrower-box.active2 {
+    transform: translate(330px, -300px) rotateZ(40deg);
+}
+#fire {
+    rotate: -120deg;
+    left:-20%;
+    top:47%;
+    height:0px;
+    width:50px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+#fire.active1 {
+    height:200px;
+    opacity:1;
+}
+#flamethrower {
+    width:300px;
+}
+
+
+
+
+#control-panel {
+    margin:30px;
+}

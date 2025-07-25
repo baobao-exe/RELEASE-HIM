@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RELEASE HIM</title>
+        <link href="RELEASE-HIM.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+    <body onload="tick()">
+        <div id="cage-box" class="">
+            <div id="him">
+                <img id="him-body" src="him/tile000.png">
+                <img id="him-face" src="him/face000.png">
+            </div>
+            <img id="cage" src="cage.png">
+        </div>
+        <div id="flamethrower-box" class="">
+            <img id="flamethrower" src="flamethrower.webp">
+            <img id="fire" src="fire.png" class="">
+        </div>
+        <div id="control-panel">
+            <button onclick="shake('cage-box')">SHAKE HIS CAGE</button>
+            <button onclick="heat()">HEAT HIM UP</button>
+        </div>
+    </body>
+</html>
+<script>
+function shake(item) { 
+    document.getElementById(item).classList.add("shake1");
+    if (item == "cage-box") {
+        document.getElementById("him-face").src = "him/face007.png";
+        document.getElementById("him-body").src = "him/tile003.png";
+        document.getElementById("him").classList.add("shake1");
+        setTimeout(() => {
+            document.getElementById("him").classList.remove("shake1");
+            document.getElementById("him").classList.add("fall1");
+            document.getElementById("him-face").src = "him/face009.png";
+            document.getElementById("him-face").style.transform = "translateY(3px)";
+            document.getElementById("him-body").src = "him/tile006.png";
+            setTimeout(() => {
+                document.getElementById("him-body").src = "him/tile000.png";
+                document.getElementById("him-face").style.transform = "translateY(0px)";
+                setTimeout(() => {
+                    document.getElementById("him").classList.remove("fall1");
+                },200)
+            },500)
+        },900)
+    }
+    setTimeout(() => {
+        document.getElementById(item).classList.remove("shake1");
+        document.getElementById(item).classList.add("shake2");
+        setTimeout(() => {
+            document.getElementById(item).classList.remove("shake2");
+            document.getElementById(item).classList.add("shake1");
+            setTimeout(() => {
+                document.getElementById(item).classList.remove("shake1");
+                document.getElementById(item).classList.add("shake2");
+                setTimeout(() => {
+                    document.getElementById(item).classList.remove("shake2");
+                }, 200)
+            }, 200)
+        }, 200)
+    }, 200)
+}
+
+function heat() {
+    document.getElementById("flamethrower-box").classList.add("active1");
+    setTimeout(() => {
+        document.getElementById("cage").classList.add("hot");
+        document.getElementById("fire").classList.add("active1");
+        document.getElementById("him-face").src = "him/face007.png";
+        document.getElementById("him-body").src = "him/tile003.png";
+        document.getElementById("him").classList.add("shake1");
+        setTimeout(() => {
+            document.getElementById("him").classList.remove("shake1");
+            setTimeout(() => {
+                document.getElementById("him-face").src = "him/face008.png";
+                document.getElementById("flamethrower-box").classList.add("active2");
+                document.getElementById("flamethrower-box").classList.remove("active1");
+                setTimeout(() => {
+                    document.getElementById("him-face").src = "him/face004.png";
+                    document.getElementById("him").classList.add("left");
+                    document.getElementById("him-body").src = "him/tile001.png";
+                    document.getElementById("flamethrower-box").classList.add("active1");
+                    document.getElementById("flamethrower-box").classList.remove("active2");
+                    setTimeout(() => {
+                        document.getElementById("him-face").src = "him/face008.png";
+                        document.getElementById("flamethrower-box").classList.add("active2");
+                        document.getElementById("flamethrower-box").classList.remove("active1");
+                        setTimeout(() => {
+                            document.getElementById("him-face").src = "him/face004.png";
+                            document.getElementById("flamethrower-box").classList.add("active1");
+                            document.getElementById("flamethrower-box").classList.remove("active2");
+                            setTimeout(() => {
+                                document.getElementById("flamethrower-box").classList.remove("active1");
+                                document.getElementById("fire").classList.remove("active1");
+                                document.getElementById("cage").classList.remove("hot");
+                                setTimeout(() => {
+                                    document.getElementById("him").classList.remove("left");
+                                    setTimeout(() => {
+                                        shiver()
+                                        document.getElementById("him-face").src = "him/face009.png";
+                                        document.getElementById("him-body").src = "him/tile002.png";
+                                    },500)
+                                },1000)
+                            },1000)
+                        },1000)
+                    },1000)
+                },1000)
+            },1000)
+        },300)
+    },2000)
+}
+
+function shiver() {
+    document.getElementById("him").style.transform = "translateX(3px)";
+    setTimeout(() => {
+        document.getElementById("him").style.transform = "translateX(0px)";
+        setTimeout(() => {
+            document.getElementById("him").style.transform = "translateX(3px)";
+            setTimeout(() => {
+                document.getElementById("him").style.transform = "translateX(0px)";
+                setTimeout(() => {
+                    document.getElementById("him").style.transform = "translateX(3px)";
+                    setTimeout(() => {
+                        document.getElementById("him").style = "";
+                    },300)
+                },300)
+            },300)
+        },300)
+    },300)
+}
+
+
+function tick() {
+    document.getElementById("fire").style.transform = "scaleX(-1)";
+    setTimeout(() => {
+        document.getElementById("fire").style.transform = "scaleX(1)";
+        setTimeout(tick,60);
+    },60)
+}
+
+</script>
